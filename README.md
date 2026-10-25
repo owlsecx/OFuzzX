@@ -18,7 +18,7 @@
 
 ## 📌 Overview
 
-HTTP parameter & path fuzzer — template fuzzing with anomaly scoring
+OFuzzX — HTTP Parameter & Path Fuzzer. It provides target URL template with FUZZ marker in path, query, header value and request body; auto-detection of existing query parameters for one-by-one fuzzing. Operators can export results (including machine-readable formats) and gate CI with severity thresholds where supported.
 
 ---
 
@@ -30,10 +30,6 @@ HTTP parameter & path fuzzer — template fuzzing with anomaly scoring
 - Threaded urllib engine (ThreadPoolExecutor) with a token-bucket rate limiter, per-request timeout, redirect follow/no-follow, custom headers, cookies, method, body and an optional TLS-verify bypass.
 - Response scoring: status, length, word/line counts, <title> extraction, reflection detection and error signature heuristics (stack traces, SQL errors, path disclosure) — read-only, nothing is exploited.
 - Baseline calibration against a control request plus an interesting-hit filter that keeps only anomalies (status change, size delta %, new keywords, reflects).
-- Depth-limited recursion into discovered directories.
-- Live result table and TXT / CSV / JSON export with a location chooser; clipboard copy of hit URLs.
-- Full CLI (-u -w -H -X --marker --threads --json --version) alongside the interactive menu.
-- Settings persisted to ~/OFuzzX/config.json.
 
 ---
 
@@ -47,7 +43,10 @@ HTTP parameter & path fuzzer — template fuzzing with anomaly scoring
 ## 🚀 Usage
 
 ```bash
-./OFuzzX
+./OFuzzX                                     # interactive menu
+./OFuzzX --json -o report.json
+./OFuzzX --url https://example.com
+./OFuzzX --help
 ```
 
 ---
